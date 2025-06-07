@@ -25,3 +25,93 @@ html {
   font-size: 24px;
   font-weight: 600;
 }
+
+main {
+  margin: 0;
+}
+
+/* Container for input and button */
+.addSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background-color: #f0f4f8;
+}
+
+.addInput {
+  padding: 10px;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.addBtn,
+.editBtn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.addBtn:hover,
+.editBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Task List Section */
+.ListSection {
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Single Task Item */
+.TaskBox {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.TaskBox .TickBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.TaskBox .Task {
+  flex: 1;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.TaskBox .edit,
+.TaskBox .delete {
+  background: none;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.TaskBox .edit {
+  color: #007bff;
+}
+
+.TaskBox .delete {
+  color: #dc3545;
+}

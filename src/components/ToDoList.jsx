@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ToDoItem from './ToDoItem';
 import { tasks } from '../utils/tasks';
+import './style.css';
 
 function ToDoList() {
     const [val, setVal] = useState("");
@@ -57,7 +58,7 @@ function ToDoList() {
     }
 
   return (
-    <>
+    <main>
         <section className='addSection'>
             <input onKeyDown={handleKey} onChange={handleChange} value={val} className='addInput'></input>
             {
@@ -69,12 +70,11 @@ function ToDoList() {
         <section className='ListSection'>
             {taskArr.map((task)=>{
                 return(
-                    <ToDoItem deleteTask={deleteTask} task={task} key={task.id}/>
+                    <ToDoItem editTask={editTask} deleteTask={deleteTask} task={task} key={task.id}/>
                 )
             })}
         </section>
-        <button onClick={()=>editTask(3)}>edit 3</button>
-    </>
+    </main>
   )
 }
 
