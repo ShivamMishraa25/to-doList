@@ -1,117 +1,208 @@
+/* Reset & Base */
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    scroll-behavior: smooth;
-}
-
-.header {
-  background-color: #007bff;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 600;
+  scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f2f6f9, #dfe9f3);
+  color: #333;
+  min-height: 100vh;
 }
 
 main {
-  margin: 0;
+  padding: 12px;
 }
 
-/* Container for input and button */
+/* Header */
+.header {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.5px;
+}
+
+/* Add Section */
 .addSection {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 20px;
-  background-color: #f0f4f8;
+  /* gap: 10px; */
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+  max-width: 680px;
+  margin: 24px auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .addInput {
   padding: 10px;
-  width: 60%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  flex: 1 1 320px;
+  border: 2px solid #6a11cb;
+  border-radius: 10px 0 0 10px;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.85);
+  transition: 0.3s ease;
+}
+
+.addInput:focus {
+  outline: none;
+  background: #fff;
+  border-color: #2575fc;
+  box-shadow: 0 0 0 3px rgba(100, 149, 237, 0.2);
 }
 
 .addBtn,
 .editBtn {
   padding: 10px 16px;
   border: none;
-  border-radius: 5px;
-  font-weight: bold;
+  border-radius: 0 10px 10px 0;
+  font-weight: 600;
+  font-size: 14px;
   color: white;
-  background-color: #007bff;
+  background: linear-gradient(to right, #43e97b, #38f9d7);
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.25s ease;
 }
 
 .addBtn:hover,
 .editBtn:hover {
-  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(60, 255, 180, 0.4);
 }
 
 /* Task List Section */
 .ListSection {
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 680px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-bottom: 32px;
 }
 
-/* Single Task Item */
+/* Task Box */
 .TaskBox {
   display: flex;
   align-items: center;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 12px 16px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.65);
+  border-left: 6px solid #6a11cb;
+  border-radius: 12px;
+  padding: 5px 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  transition: 0.2s ease;
 }
 
-.TaskBox .TickBtn {
+.TaskBox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.TickBtn {
   background: none;
   border: none;
   font-size: 20px;
-  margin-right: 12px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+  margin-right: 10px;
 }
 
-.TaskBox .Task {
+.TickBtn:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.Task {
   flex: 1;
   font-size: 16px;
+  font-weight: bold;
+  color: #333;
   word-break: break-word;
 }
 
-.TaskBox .edit,
-.TaskBox .delete {
+.Task.completed {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.75;
+}
+
+/* Action Buttons */
+.edit,
+.delete {
   background: none;
   border: none;
-  margin-left: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.2s;
 }
 
-.TaskBox .edit {
-  color: #007bff;
+.edit {
+  color: #2575fc;
 }
 
-.TaskBox .delete {
-  color: #dc3545;
+.edit:hover {
+  background-color: #e5f0ff;
+  transform: scale(1.05);
+}
+
+.delete {
+  color: #e74c3c;
+}
+
+.delete:hover {
+  background-color: #ffe6e6;
+  transform: scale(1.05);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .addSection {
+    /* flex-direction: column; */
+    gap: 10px;
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .TaskBox {
+    flex-wrap: nowrap;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .Task {
+    font-size: 14px;
+  }
+
+  .edit,
+  .delete {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+
+  .addBtn,
+  .editBtn {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .addInput {
+    width: 100%;
+    border-radius: 10px;
+  }
 }
