@@ -4,29 +4,57 @@ import { tasks } from '../utils/tasks';
 
 function ToDoList() {
     const [val, setVal] = useState("");
-    const [newTask, setNewTask] = useState({});
+    const [taskArr, setTaskArr] = useState(tasks);
+    const [isEditing, setIsEditing] = useState(false);
+
     function handleChange(e) {
         setVal(e.target.value);
     }
-    function addBtn() {
-        setNewTask({task: {val}, isComplete: false, id: tasks.length+1})
-        tasks.push(newTask);
+    function handleClick() {
+        if(val=="") {
+            alert("Please enter a task");
+            return;
+        }
+        if(isEditing) {
+
+        }
+        const newTask = {
+            id: taskArr.length+1,
+            task: val,
+            isComplete: false
+        };
+        setTaskArr([...taskArr, newTask]);
         setVal("");
+    }
+    function handleKey(e) {
+        e.key=='Enter'&&handleClick()
+    }
+
+    function deleteTask(id) {
+        const deletedArr = taskArr.filter(task=>task.id !== id);
+        setTaskArr(deletedArr);
+    }
+    function editTask(id) {
+        const task = taskArr.find(task=>task.id==id);
+        setVal(task.task);
+        setIsEditing(true);
+        
     }
 
   return (
     <>
         <section className='addSection'>
-            <input onChange={handleChange} value={val} className='addInput'></input>
-            <button className='addBtn'>search</button>
+            <input onKeyDown={handleKey} onChange={handleChange} value={val} className='addInput'></input>
+            <button onClick={handleClick} className='addBtn'>{isEditing?"Save Changes":"Add a Task"}</button>
         </section>
         <section className='ListSection'>
-            {tasks.map((task)=>{
+            {taskArr.map((task)=>{
                 return(
-                    <ToDoItem task={task} key={task.id}/>
+                    <ToDoItem deleteTask={deleteTask} task={task} key={task.id}/>
                 )
             })}
         </section>
+        <button onClick={()=>editTask(3)}>edit 3</button>
     </>
   )
 }
