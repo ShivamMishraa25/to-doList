@@ -2,7 +2,8 @@
 
 A simple and intuitive web-based To-Do List application built with React and Vite. This application allows users to manage their daily tasks efficiently, providing features to add, delete, edit, and mark tasks as complete.
 
--> Made by shivam.m4464@gmail.com
+-> Made by shivam.m4464@gmail.com,
+-> as part of Internshala PGC FSD Course
 
 ## Features
 
